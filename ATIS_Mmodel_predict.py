@@ -19,7 +19,7 @@ def word_exist(str):
     except:
         return False
 
-sentence = "i prefer to fly from atlanta to seattle"
+sentence = "i prefer to fly from atlanta to seattle early in the morning"
 sentenceList = sentence.split()
 sentence2id = []
 for str in sentenceList:
