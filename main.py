@@ -112,9 +112,8 @@ for i in range(n_epochs):
     print('Loss = {}, Precision = {}, Recall = {}, F1 = {}'.format(avgLoss, con_dict['r'], con_dict['p'], con_dict['f1']))
 
     if con_dict['f1'] > best_val_f1:
-    	best_val_f1 = con_dict['f1']
-    	open('model_architecture.json','w').write(model.to_json())
-    	model.save_weights('best_model_weights.h5',overwrite=True)
-    	print("Best validation F1 score = {}".format(best_val_f1))
+        best_val_f1 = con_dict['f1']
+        open('model_architecture.json','w').write(model.to_json())
+        model.save_weights('best_model_weights.h5',overwrite=True)
+        print("Best validation F1 score = {}".format(best_val_f1))
     print()
-    
