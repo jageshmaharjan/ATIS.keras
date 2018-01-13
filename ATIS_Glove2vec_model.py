@@ -12,6 +12,17 @@ from keras.layers import Conv1D
 from keras.callbacks import ModelCheckpoint, TensorBoard
 import progressbar
 
+embeddings_index = dict()
+glove2vec = "/home/jugs/PycharmProjects/ATIS.keras/input/glove.6B.50d.txt"
+f = open(glove2vec)
+for line in f :
+    values = line.split()
+    word = values[0]
+    coefs = np.asarray(values[1:], dtype='float32')
+    embeddings_index[word] = coefs
+f.close()
+
+
 train_set, valid_set, dicts = data.load.atisfull()
 w2idx, labels2idx = dicts['words2idx'], dicts['labels2idx']
 
@@ -37,13 +48,23 @@ print()
 print("It's label : {}".format(labels_train[1]))
 print("Encoded form: {}".format(train_label[1]))
 
+
+# create a weight matrix for words in training docs
+embedding_matrix = np.zeros((len(dicts['words2idx']), 50))
+for word, i in dicts['words2idx'].items():
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+        embedding_matrix[i] = embedding_vector
+
+
 model = Sequential()
-model.add(Embedding(n_vocab,100))
+e = Embedding(len(dicts['words2idx']), 50, weights=[embedding_matrix], trainable=False)
+model.add(e)
 model.add(Conv1D(188,5,border_mode='same', activation='relu'))
 model.add(Dropout(0.25))
 model.add(LSTM(100,return_sequences=True))
 model.add(TimeDistributed(Dense(n_classes, activation='softmax')))
-model.compile('rmsprop', 'categorical_crossentropy')
+model.compile('adam', 'categorical_crossentropy')
 
 #Callbacks <funny now hhhh>
 import time
@@ -53,7 +74,7 @@ checkpointer = ModelCheckpoint(path+"ATIS_LSTM-"+str(time.time())+".h5", verbose
 tensorboard = TensorBoard(log_dir=path, write_images=True,
                       write_graph=True, histogram_freq=0)
 
-n_epochs = 1
+n_epochs = 30
 path = "output_embed/"
 for i in range(n_epochs):
     print("Training epoch {}".format(i))

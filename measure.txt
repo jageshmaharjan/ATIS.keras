@@ -191,7 +191,7 @@ from O O
 memphis B-fromloc.city_name B-fromloc.city_name
 to O O
 tacoma B-toloc.city_name B-toloc.city_name
-dinner B-meal_description B-depart_date.date_relative
+dinner B-meal_description B-meal_description
 EOS O O
 
 BOS O O
@@ -248,7 +248,7 @@ chicago B-toloc.city_name B-toloc.city_name
 arrive O O
 in O O
 chicago B-toloc.city_name B-toloc.city_name
-about B-arrive_time.time_relative O
+about B-arrive_time.time_relative B-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
 pm I-arrive_time.time I-arrive_time.time
 EOS O O
@@ -260,8 +260,8 @@ arriving O O
 new B-toloc.city_name B-fromloc.city_name
 york I-toloc.city_name I-fromloc.city_name
 city I-toloc.city_name I-fromloc.city_name
-next B-arrive_date.date_relative B-depart_date.date_relative
-saturday B-arrive_date.day_name B-depart_date.day_name
+next B-arrive_date.date_relative B-arrive_date.date_relative
+saturday B-arrive_date.day_name B-arrive_date.day_name
 EOS O O
 
 BOS O O
@@ -412,7 +412,7 @@ vegas I-fromloc.city_name I-fromloc.city_name
 to O O
 los B-toloc.city_name B-toloc.city_name
 angeles I-toloc.city_name I-toloc.city_name
-california B-toloc.state_name B-toloc.state_name
+california B-toloc.state_name I-toloc.state_name
 and O O
 arrive O O
 on O O
@@ -490,8 +490,8 @@ EOS O O
 
 BOS O O
 does O O
-tacoma B-airport_name B-fromloc.airport_name
-airport I-airport_name I-airport_name
+tacoma B-airport_name B-airport_name
+airport I-airport_name O
 offer O O
 transportation O O
 from O O
@@ -519,7 +519,7 @@ what O O
 day O O
 of O O
 the O O
-week O O
+week O B-flight_mod
 do O O
 flights O O
 from O O
@@ -547,7 +547,7 @@ what O O
 days O O
 of O O
 the O O
-week O O
+week O B-round_trip
 do O O
 flights O O
 from O O
@@ -743,7 +743,7 @@ on O O
 american B-airline_name B-airline_name
 flight O O
 DIGITDIGITDIGIT B-flight_number B-flight_number
-DIGITDIGITDIGIT I-flight_number B-flight_number
+DIGITDIGITDIGIT I-flight_number O
 from O O
 milwaukee B-fromloc.city_name B-fromloc.city_name
 to O O
@@ -876,9 +876,9 @@ next B-depart_date.date_relative B-depart_date.date_relative
 tuesday B-depart_date.day_name B-depart_date.day_name
 and O O
 returning O O
-the O O
-day B-return_date.date_relative B-depart_date.day_name
-after I-return_date.date_relative B-depart_time.time_relative
+the O B-return_date.date_relative
+day B-return_date.date_relative I-depart_date.today_relative
+after I-return_date.date_relative I-depart_date.today_relative
 EOS O O
 
 BOS O O
@@ -1013,7 +1013,7 @@ also O O
 like O O
 to O O
 have O O
-lunch B-meal_description B-meal_description
+lunch B-meal_description O
 during O O
 my O O
 flight O O
@@ -1033,7 +1033,7 @@ on O O
 a O O
 trip O O
 to O O
-chicago B-toloc.city_name B-toloc.city_name
+chicago B-toloc.city_name B-stoploc.city_name
 which O O
 arrives O O
 in O O
@@ -1087,7 +1087,7 @@ like O O
 to O O
 leave O O
 montreal B-fromloc.city_name B-fromloc.city_name
-quebec B-fromloc.state_name B-fromloc.state_code
+quebec B-fromloc.state_name B-fromloc.state_name
 on O O
 a O O
 flight O O
@@ -1228,7 +1228,7 @@ by O O
 way O O
 of O O
 new B-stoploc.city_name B-stoploc.city_name
-york I-stoploc.city_name I-fromloc.city_name
+york I-stoploc.city_name I-stoploc.city_name
 EOS O O
 
 BOS O O
@@ -1242,7 +1242,7 @@ florida B-fromloc.state_name B-fromloc.state_name
 to O O
 las B-toloc.city_name B-toloc.city_name
 vegas I-toloc.city_name I-toloc.city_name
-<UNK> B-toloc.state_name O
+<UNK> B-toloc.state_name B-depart_time.time
 arriving O O
 before B-arrive_time.time_relative B-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
@@ -1369,7 +1369,7 @@ to O O
 orlando B-toloc.city_name B-toloc.city_name
 back O O
 to O O
-kansas B-toloc.city_name B-toloc.city_name
+kansas B-toloc.city_name B-stoploc.city_name
 city I-toloc.city_name I-toloc.city_name
 EOS O O
 
@@ -1444,7 +1444,7 @@ does O O
 the O O
 airport O O
 at O O
-burbank B-toloc.city_name B-city_name
+burbank B-toloc.city_name B-airline_code
 have O O
 a O O
 flight O O
@@ -1466,7 +1466,7 @@ from O O
 kansas B-fromloc.city_name B-fromloc.city_name
 city I-fromloc.city_name I-fromloc.city_name
 on O O
-saturdays B-arrive_date.day_name B-arrive_date.day_name
+saturdays B-arrive_date.day_name B-arrive_time.period_of_day
 in O O
 the O O
 afternoon B-arrive_time.period_of_day B-arrive_time.period_of_day
@@ -1485,7 +1485,7 @@ on O O
 saturday B-depart_date.day_name B-arrive_date.day_name
 april B-depart_date.month_name B-arrive_date.month_name
 twenty B-depart_date.day_number B-arrive_date.day_number
-third I-depart_date.day_number B-toloc.city_name
+third I-depart_date.day_number I-arrive_date.day_number
 in O O
 the O O
 afternoon B-depart_time.period_of_day B-arrive_time.period_of_day
@@ -1524,7 +1524,7 @@ first I-depart_date.day_number I-depart_date.day_number
 in O O
 the O O
 late B-depart_time.period_of_day B-depart_time.period_of_day
-afternoon I-depart_time.period_of_day B-flight_stop
+afternoon I-depart_time.period_of_day I-depart_time.period_of_day
 EOS O O
 
 BOS O O
@@ -1678,8 +1678,8 @@ cities O O
 from O O
 boston B-fromloc.city_name B-fromloc.city_name
 does O O
-america B-airline_name O
-west I-airline_name O
+america B-airline_name B-airline_name
+west I-airline_name I-airline_name
 fly O O
 first B-class_type B-class_type
 class I-class_type I-class_type
@@ -1836,7 +1836,7 @@ transportation O O
 between O O
 the O O
 charlotte B-airport_name B-fromloc.airport_name
-airport I-airport_name O
+airport I-airport_name I-fromloc.airport_name
 charlotte B-city_name B-fromloc.airport_name
 airport I-city_name I-fromloc.airport_name
 and O O
@@ -1860,7 +1860,7 @@ at O O
 DIGIT B-depart_time.time B-depart_time.time
 pm I-depart_time.time I-depart_time.time
 or O B-or
-later B-depart_time.time_relative B-fromloc.airport_name
+later B-depart_time.time_relative O
 on O O
 monday B-depart_date.day_name B-depart_date.day_name
 EOS O O
@@ -1900,7 +1900,7 @@ show O O
 me O O
 flight O O
 us B-airline_code B-airline_code
-DIGITDIGITDIGITDIGIT B-flight_number B-flight_number
+DIGITDIGITDIGITDIGIT B-flight_number B-depart_time.time
 on O O
 monday B-depart_date.day_name B-depart_date.day_name
 from O O
@@ -2120,7 +2120,7 @@ denver B-toloc.city_name B-toloc.city_name
 on O O
 june B-arrive_date.month_name B-depart_date.month_name
 sixth B-arrive_date.day_number B-depart_date.day_number
-by B-arrive_time.time_relative O
+by B-arrive_time.time_relative B-depart_time.time_relative
 DIGIT B-arrive_time.time B-depart_time.time
 pm I-arrive_time.time I-depart_time.time
 EOS O O
@@ -2142,9 +2142,9 @@ the O O
 fare O O
 for O O
 a O O
-taxi B-transport_type O
+taxi B-transport_type B-transport_type
 to O O
-denver B-city_name B-toloc.city_name
+denver B-city_name B-city_name
 EOS O O
 
 BOS O O
@@ -2387,15 +2387,15 @@ EOS O O
 BOS O O
 what O O
 airlines O O
-<UNK> O O
+<UNK> O B-flight_number
 from O O
 love B-fromloc.airport_name B-fromloc.airport_name
 field I-fromloc.airport_name I-fromloc.airport_name
 between O O
-DIGIT B-depart_time.start_time B-arrive_time.start_time
+DIGIT B-depart_time.start_time B-depart_time.start_time
 and O O
 DIGITDIGIT B-depart_time.end_time B-depart_time.end_time
-am I-depart_time.end_time I-depart_time.end_time
+am I-depart_time.end_time I-depart_time.time
 on O O
 june B-depart_date.month_name B-depart_date.month_name
 sixth B-depart_date.day_number B-depart_date.day_number
@@ -2409,8 +2409,8 @@ at O O
 love B-toloc.airport_name B-toloc.airport_name
 field I-toloc.airport_name I-toloc.airport_name
 on O O
-june B-arrive_date.month_name B-depart_date.month_name
-sixth B-arrive_date.day_number B-depart_date.day_number
+june B-arrive_date.month_name B-arrive_date.month_name
+sixth B-arrive_date.day_number B-arrive_date.day_number
 EOS O O
 
 BOS O O
@@ -2505,7 +2505,7 @@ airlines I-airline_name I-airline_name
 international I-airline_name I-airline_name
 flights O O
 use O O
-<UNK> B-aircraft_code B-meal_description
+<UNK> B-aircraft_code O
 EOS O O
 
 BOS O O
@@ -2517,7 +2517,7 @@ international I-airline_name I-airline_name
 flights O O
 use O O
 aircraft O O
-DIGITDIGITDIGIT B-aircraft_code B-aircraft_code
+DIGITDIGITDIGIT B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -2528,7 +2528,7 @@ airlines I-airline_name I-airline_name
 flights O O
 use O O
 aircraft O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -2546,7 +2546,7 @@ st. B-fromloc.city_name B-fromloc.city_name
 petersburg I-fromloc.city_name I-fromloc.city_name
 to O O
 ontario B-toloc.city_name B-toloc.city_name
-canada B-toloc.country_name B-toloc.state_name
+canada B-toloc.country_name B-toloc.country_name
 with O O
 a O O
 stopover O O
@@ -2582,7 +2582,7 @@ BOS O O
 which O O
 airport O O
 is O O
-<UNK> B-mod O
+<UNK> B-mod B-aircraft_code
 to O O
 ontario B-city_name B-toloc.city_name
 california B-state_name B-toloc.state_name
@@ -2665,7 +2665,7 @@ flights O O
 which O O
 serve O O
 a O O
-snack B-meal_description O
+snack B-meal_description B-meal_description
 to O O
 coach B-compartment B-class_type
 passengers O O
@@ -2676,7 +2676,7 @@ what O O
 is O O
 meal O B-meal
 code O O
-<UNK> B-meal_code O
+<UNK> B-meal_code B-meal_code
 EOS O O
 
 BOS O O
@@ -2722,18 +2722,18 @@ EOS O O
 BOS O O
 list O O
 the O O
-tower B-airline_name B-airline_name
+tower B-airline_name O
 air I-airline_name I-airline_name
 flights O O
 on O O
-<UNK> B-day_name O
+<UNK> B-day_name B-flight_number
 EOS O O
 
 BOS O O
 list O O
 all O O
-tower B-airline_name B-airline_name
-air I-airline_name I-airline_name
+tower B-airline_name O
+air I-airline_name B-airline_name
 flights O O
 with O O
 meals B-meal B-meal
@@ -2801,7 +2801,7 @@ from O O
 tampa B-fromloc.city_name B-fromloc.city_name
 in O O
 the O O
-early B-depart_time.period_of_day B-depart_time.period_of_day
+early B-depart_time.period_of_day B-depart_time.period_mod
 evening B-depart_time.period_of_day B-depart_time.period_of_day
 and O O
 arrive O O
@@ -2868,8 +2868,8 @@ BOS O O
 how O O
 far O O
 is O O
-new B-city_name B-city_name
-york I-city_name I-city_name
+new B-city_name O
+york I-city_name I-fromloc.city_name
 's O O
 la B-airport_name B-fromloc.airport_name
 guardia I-airport_name I-fromloc.airport_name
@@ -2882,6 +2882,17 @@ how O O
 far O O
 is O O
 toronto B-airport_name B-fromloc.airport_name
+international I-airport_name I-toloc.airport_name
+from O O
+downtown O O
+EOS O O
+
+BOS O O
+how O O
+far O O
+is O O
+los B-airport_name B-fromloc.airport_name
+angeles I-airport_name I-fromloc.airport_name
 international I-airport_name I-fromloc.airport_name
 from O O
 downtown O O
@@ -2891,19 +2902,8 @@ BOS O O
 how O O
 far O O
 is O O
-los B-airport_name B-city_name
-angeles I-airport_name I-city_name
-international I-airport_name I-fromloc.airport_name
-from O O
-downtown O O
-EOS O O
-
-BOS O O
-how O O
-far O O
-is O O
-san B-airport_name B-city_name
-francisco I-airport_name I-city_name
+san B-airport_name B-fromloc.airport_name
+francisco I-airport_name I-fromloc.airport_name
 international I-airport_name I-fromloc.airport_name
 from O O
 downtown O O
@@ -2928,8 +2928,8 @@ a O O
 limousine B-transport_type B-transport_type
 service O O
 in O O
-la B-airport_name B-city_name
-guardia I-airport_name I-airport_name
+la B-airport_name B-fromloc.airport_name
+guardia I-airport_name I-fromloc.airport_name
 EOS O O
 
 BOS O O
@@ -2940,7 +2940,7 @@ a O O
 limousine B-transport_type B-transport_type
 service O O
 in O O
-toronto B-airport_name B-city_name
+toronto B-airport_name B-fromloc.airport_name
 international I-airport_name I-fromloc.airport_name
 EOS O O
 
@@ -3051,7 +3051,7 @@ round B-round_trip B-round_trip
 trip I-round_trip I-round_trip
 airfare O O
 from O O
-<UNK> O O
+<UNK> O B-fromloc.city_name
 indianapolis B-fromloc.city_name B-fromloc.city_name
 to O O
 memphis B-toloc.city_name B-toloc.city_name
@@ -3237,7 +3237,7 @@ arriving O O
 in O O
 st. B-toloc.city_name B-toloc.city_name
 louis I-toloc.city_name I-toloc.city_name
-close B-arrive_time.time_relative B-toloc.state_name
+close B-arrive_time.time_relative O
 to O O
 DIGITDIGITDIGIT B-arrive_time.time B-arrive_time.time
 pm I-arrive_time.time I-arrive_time.time
@@ -3387,9 +3387,9 @@ airlines I-airline_name I-airline_name
 flight O O
 DIGITDIGIT B-flight_number B-flight_number
 from O O
-jfk B-fromloc.airport_code B-flight_number
+jfk B-fromloc.airport_code B-fromloc.airport_code
 to O O
-<UNK> B-toloc.airport_code B-toloc.city_name
+<UNK> B-toloc.airport_code B-depart_time.time
 EOS O O
 
 BOS O O
@@ -3430,8 +3430,8 @@ airport I-fromloc.airport_name I-fromloc.airport_name
 to O O
 downtown O O
 new B-city_name B-toloc.city_name
-york I-city_name I-fromloc.city_name
-city I-city_name I-fromloc.city_name
+york I-city_name I-toloc.city_name
+city I-city_name I-toloc.city_name
 EOS O O
 
 BOS O O
@@ -3456,7 +3456,7 @@ distance O O
 in O O
 <UNK> O O
 from O O
-san B-fromloc.airport_name B-fromloc.city_name
+san B-fromloc.airport_name B-fromloc.airport_name
 francisco I-fromloc.airport_name I-fromloc.airport_name
 international I-fromloc.airport_name I-fromloc.airport_name
 airport I-fromloc.airport_name I-fromloc.airport_name
@@ -3474,7 +3474,7 @@ for O O
 the O O
 city B-city_name O
 of I-city_name O
-boston I-city_name B-city_name
+boston I-city_name I-city_name
 EOS O O
 
 BOS O O
@@ -3486,9 +3486,9 @@ from O O
 houston B-fromloc.city_name B-fromloc.city_name
 to O O
 milwaukee B-toloc.city_name B-toloc.city_name
-departing O O
+departing O I-toloc.airport_name
 friday B-depart_date.day_name B-depart_date.day_name
-pm B-depart_time.period_of_day B-depart_time.period_of_day
+pm B-depart_time.period_of_day B-depart_date.day_name
 EOS O O
 
 BOS O O
@@ -3499,7 +3499,7 @@ houston B-fromloc.city_name B-fromloc.city_name
 to O O
 milwaukee B-toloc.city_name B-toloc.city_name
 friday B-depart_date.day_name B-depart_date.day_name
-pm B-depart_time.period_of_day B-depart_time.period_of_day
+pm B-depart_time.period_of_day B-depart_date.day_name
 EOS O O
 
 BOS O O
@@ -3561,7 +3561,7 @@ seating O O
 capacity O O
 for O O
 aircraft O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -3572,7 +3572,7 @@ seating O O
 capacity O O
 for O O
 delta B-airline_name B-airline_name
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -3586,7 +3586,7 @@ lake I-toloc.city_name I-toloc.city_name
 city I-toloc.city_name I-toloc.city_name
 on O O
 delta B-airline_name B-airline_name
-<UNK> B-aircraft_code I-airline_name
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -3600,7 +3600,7 @@ lake I-toloc.city_name I-toloc.city_name
 city I-toloc.city_name I-toloc.city_name
 on O O
 delta B-airline_name B-airline_name
-<UNK> B-aircraft_code I-airline_name
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -3658,9 +3658,9 @@ saturday B-depart_date.day_name B-depart_date.day_name
 from O O
 charlotte B-fromloc.airport_name B-fromloc.airport_name
 airport I-fromloc.airport_name I-fromloc.airport_name
-around B-depart_time.time_relative B-arrive_time.time_relative
-DIGIT B-depart_time.time B-arrive_time.time
-pm I-depart_time.time I-arrive_time.time
+around B-depart_time.time_relative B-depart_time.time_relative
+DIGIT B-depart_time.time B-depart_time.time
+pm I-depart_time.time I-depart_time.time
 EOS O O
 
 BOS O O
@@ -3952,7 +3952,7 @@ EOS O O
 
 BOS O O
 flights O O
-newark B-fromloc.city_name B-fromloc.city_name
+newark B-fromloc.city_name O
 to O O
 los B-toloc.city_name B-toloc.city_name
 angeles I-toloc.city_name I-toloc.city_name
@@ -4323,7 +4323,7 @@ BOS O O
 what O O
 is O O
 airline O O
-<UNK> B-airline_code O
+<UNK> B-airline_code B-flight_number
 EOS O O
 
 BOS O O
@@ -4465,8 +4465,8 @@ transportation O O
 in O O
 houston B-city_name B-city_name
 on O O
-monday B-day_name B-depart_date.day_name
-afternoon B-period_of_day B-depart_time.period_of_day
+monday B-day_name B-day_name
+afternoon B-period_of_day B-period_of_day
 EOS O O
 
 BOS O O
@@ -4495,8 +4495,8 @@ could O O
 get O O
 in O O
 boston B-city_name B-city_name
-late B-period_of_day B-city_name
-night B-period_of_day B-depart_time.period_of_day
+late B-period_of_day B-depart_time.period_of_day
+night B-period_of_day I-depart_time.period_of_day
 EOS O O
 
 BOS O O
@@ -4571,7 +4571,7 @@ montreal B-fromloc.city_name B-fromloc.city_name
 to O O
 orlando B-toloc.city_name B-toloc.city_name
 and O O
-long B-toloc.city_name B-toloc.city_name
+long B-toloc.city_name B-fromloc.city_name
 beach I-toloc.city_name I-fromloc.city_name
 EOS O O
 
@@ -4626,8 +4626,8 @@ i O O
 'd O O
 like O O
 a O O
-<UNK> B-flight_mod O
-<UNK> I-flight_mod O
+<UNK> B-flight_mod B-aircraft_code
+<UNK> I-flight_mod I-flight_mod
 flight O O
 from O O
 new B-fromloc.city_name B-fromloc.city_name
@@ -4792,7 +4792,7 @@ EOS O O
 BOS O O
 what O O
 does O O
-q B-fare_basis_code B-airport_code
+q B-fare_basis_code B-restriction_code
 mean O O
 EOS O O
 
@@ -4890,7 +4890,7 @@ EOS O O
 BOS O O
 what O O
 does O O
-m B-fare_basis_code B-airport_code
+m B-fare_basis_code B-airline_code
 mean O O
 EOS O O
 
@@ -5126,8 +5126,8 @@ EOS O O
 BOS O O
 what O O
 does O O
-<UNK> B-mod B-airport_code
-sa B-days_code B-restriction_code
+<UNK> B-mod O
+sa B-days_code B-days_code
 mean O O
 EOS O O
 
@@ -5136,7 +5136,7 @@ what O O
 is O O
 the O O
 earliest B-flight_mod B-flight_mod
-daily B-flight_days B-meal_description
+daily B-flight_days B-flight_days
 flight O O
 between O O
 oakland B-fromloc.city_name B-fromloc.city_name
@@ -5202,9 +5202,9 @@ many O O
 passengers O O
 can O O
 an O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-aircraft_code
 aircraft O O
-<UNK> O O
+<UNK> O B-flight_number
 EOS O O
 
 BOS O O
@@ -5215,7 +5215,7 @@ seating O O
 capacity O O
 of O O
 a O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -5252,7 +5252,7 @@ capacity O O
 for O O
 the O O
 aircraft O O
-m80 B-aircraft_code O
+m80 B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -5266,7 +5266,7 @@ and O O
 phoenix B-toloc.city_name B-toloc.city_name
 using O O
 a O O
-dc10 B-aircraft_code B-meal_description
+dc10 B-aircraft_code B-aircraft_code
 aircraft O O
 EOS O O
 
@@ -5332,7 +5332,7 @@ transportation O O
 is O O
 available O O
 between O O
-<UNK> B-airport_code O
+<UNK> B-airport_code B-fromloc.airport_name
 and O O
 downtown O O
 washington B-city_name B-toloc.city_name
@@ -5344,7 +5344,7 @@ are O O
 the O O
 flights O O
 between O O
-<UNK> B-airport_code O
+<UNK> B-airport_code B-fromloc.airport_code
 and O O
 milwaukee B-city_name B-toloc.city_name
 EOS O O
@@ -5402,9 +5402,9 @@ afternoon B-depart_time.period_of_day B-depart_time.period_of_day
 and O O
 arrive O O
 as O O
-soon O B-toloc.city_name
-after B-arrive_time.time_relative B-arrive_time.time_relative
-DIGIT B-arrive_time.time B-arrive_time.time
+soon O O
+after B-arrive_time.time_relative B-depart_time.time_relative
+DIGIT B-arrive_time.time B-depart_time.time
 pm I-arrive_time.time I-arrive_time.time
 as O O
 possible O O
@@ -5480,7 +5480,7 @@ salt B-toloc.city_name B-toloc.city_name
 lake I-toloc.city_name I-toloc.city_name
 city I-toloc.city_name I-toloc.city_name
 leaving O O
-after B-depart_time.time_relative B-airline_name
+after B-depart_time.time_relative B-depart_time.time_relative
 midnight B-depart_time.period_of_day B-depart_time.period_of_day
 thursday B-depart_date.day_name B-depart_date.day_name
 EOS O O
@@ -5800,10 +5800,10 @@ seattle B-toloc.city_name B-toloc.city_name
 that O O
 arrives O O
 no B-arrive_time.time_relative O
-later I-arrive_time.time_relative B-arrive_time.time_relative
-than I-arrive_time.time_relative O
+later I-arrive_time.time_relative I-arrive_time.time_relative
+than I-arrive_time.time_relative I-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
-pm I-arrive_time.time I-arrive_time.time
+pm I-arrive_time.time I-depart_time.time
 EOS O O
 
 BOS O O
@@ -5818,10 +5818,10 @@ seattle B-toloc.city_name B-toloc.city_name
 that O O
 arrives O O
 no B-arrive_time.time_relative O
-later I-arrive_time.time_relative B-arrive_time.time_relative
-than I-arrive_time.time_relative O
+later I-arrive_time.time_relative I-arrive_time.time_relative
+than I-arrive_time.time_relative I-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
-pm I-arrive_time.time I-arrive_time.time
+pm I-arrive_time.time I-depart_time.time
 EOS O O
 
 BOS O O
@@ -6504,7 +6504,7 @@ flights O O
 from O O
 milwaukee B-fromloc.city_name B-fromloc.city_name
 to O O
-<UNK> B-toloc.airport_code O
+<UNK> B-toloc.airport_code B-toloc.airport_name
 EOS O O
 
 BOS O O
@@ -6589,7 +6589,7 @@ EOS O O
 
 BOS O O
 list O O
-last B-flight_mod B-flight_mod
+last B-flight_mod O
 wednesday B-depart_date.day_name B-depart_date.day_name
 flight O O
 from O O
@@ -6610,7 +6610,7 @@ san B-toloc.city_name B-toloc.city_name
 diego I-toloc.city_name I-toloc.city_name
 stopping O O
 at O O
-<UNK> B-stoploc.airport_code B-stoploc.city_name
+<UNK> B-stoploc.airport_code B-depart_time.time
 EOS O O
 
 BOS O O
@@ -6823,10 +6823,10 @@ transportation O O
 available O O
 at O O
 the O O
-salt B-airport_name B-city_name
-lake I-airport_name I-city_name
-city I-airport_name I-fromloc.airport_name
-airport I-airport_name I-fromloc.airport_name
+salt B-airport_name B-airport_name
+lake I-airport_name I-airport_name
+city I-airport_name I-airport_name
+airport I-airport_name I-airport_name
 EOS O O
 
 BOS O O
@@ -6840,7 +6840,7 @@ lake I-fromloc.city_name I-fromloc.city_name
 city I-fromloc.city_name I-fromloc.city_name
 to O O
 phoenix B-toloc.city_name B-toloc.city_name
-departing O O
+departing O B-depart_date.date_relative
 wednesday B-depart_date.day_name B-depart_date.day_name
 after B-depart_time.time_relative B-depart_time.time_relative
 DIGIT B-depart_time.time B-depart_time.time
@@ -6888,7 +6888,7 @@ information O O
 for O O
 thursday B-depart_date.day_name B-depart_date.day_name
 departing O O
-<UNK> B-depart_time.time_relative O
+<UNK> B-depart_time.time_relative B-flight_number
 to I-depart_time.time_relative O
 DIGIT B-depart_time.time B-depart_time.time
 am I-depart_time.time I-depart_time.time
@@ -6973,18 +6973,18 @@ BOS O O
 list O O
 airports O O
 in O O
-arizona B-state_name O
+arizona B-state_name B-fromloc.city_name
 <UNK> I-state_name O
 and O O
-california B-state_name B-city_name
+california B-state_name B-fromloc.city_name
 please O O
 EOS O O
 
 BOS O O
 list O O
-california B-state_name B-fromloc.airport_name
-<UNK> B-state_name O
-arizona B-state_name O
+california B-state_name B-fromloc.state_name
+<UNK> B-state_name I-fromloc.airport_name
+arizona B-state_name B-fromloc.state_name
 airports O O
 EOS O O
 
@@ -6992,12 +6992,12 @@ BOS O O
 list O O
 the O O
 arizona B-state_name B-fromloc.airport_name
-airport O I-airport_name
+airport O I-fromloc.airport_name
 EOS O O
 
 BOS O O
 list O O
-california B-state_name O
+california B-state_name B-fromloc.state_name
 airports O O
 EOS O O
 
@@ -7013,7 +7013,7 @@ EOS O O
 
 BOS O O
 list O O
-california B-state_name O
+california B-state_name B-fromloc.state_name
 airports O O
 EOS O O
 
@@ -7212,8 +7212,8 @@ from O O
 oakland B-fromloc.city_name B-fromloc.city_name
 and O O
 arriving O O
-salt B-toloc.city_name B-toloc.city_name
-lake I-toloc.city_name I-toloc.city_name
+salt B-toloc.city_name O
+lake I-toloc.city_name I-fromloc.city_name
 city I-toloc.city_name I-toloc.city_name
 EOS O O
 
@@ -7513,7 +7513,7 @@ BOS O O
 show O O
 me O O
 a O O
-return B-round_trip O
+return B-round_trip B-round_trip
 flight O O
 from O O
 miami B-fromloc.city_name B-fromloc.city_name
@@ -7677,7 +7677,7 @@ show O O
 me O O
 the O O
 cheapest B-cost_relative B-cost_relative
-economy B-economy B-fromloc.airport_name
+economy B-economy B-economy
 flights O O
 from O O
 miami B-fromloc.city_name B-fromloc.city_name
@@ -8061,7 +8061,7 @@ is O O
 as B-airline_code B-airline_code
 as O O
 in O O
-<UNK> O O
+<UNK> O B-flight_number
 EOS O O
 
 BOS O O
@@ -8282,8 +8282,8 @@ airports O O
 to O O
 downtown O O
 in O O
-new B-city_name B-city_name
-york I-city_name I-city_name
+new B-city_name O
+york I-city_name I-toloc.city_name
 EOS O O
 
 BOS O O
@@ -8306,7 +8306,7 @@ BOS O O
 list O O
 airports O O
 in O O
-la B-city_name B-city_name
+la B-city_name O
 EOS O O
 
 BOS O O
@@ -8318,14 +8318,14 @@ BOS O O
 list O O
 airports O O
 in O O
-la B-city_name B-city_name
+la B-city_name O
 EOS O O
 
 BOS O O
 list O O
 airports O O
 in O O
-la B-city_name B-city_name
+la B-city_name O
 EOS O O
 
 BOS O O
@@ -8338,12 +8338,12 @@ EOS O O
 
 BOS O O
 list O O
-la B-city_name B-fromloc.airport_name
+la B-city_name O
 EOS O O
 
 BOS O O
 list O O
-la B-city_name B-fromloc.airport_name
+la B-city_name O
 EOS O O
 
 BOS O O
@@ -8475,7 +8475,7 @@ orlando B-toloc.city_name B-toloc.city_name
 round B-round_trip B-round_trip
 trip I-round_trip I-round_trip
 leaving O O
-saturday B-depart_date.day_name B-depart_date.day_name
+saturday B-depart_date.day_name I-depart_date.today_relative
 returning O O
 next B-return_date.date_relative B-depart_date.date_relative
 saturday B-return_date.day_name B-depart_date.day_name
@@ -8504,7 +8504,7 @@ fare O O
 <UNK> O O
 code O O
 of O O
-q B-fare_basis_code B-flight_stop
+q B-fare_basis_code O
 EOS O O
 
 BOS O O
@@ -8642,7 +8642,7 @@ seattle B-fromloc.city_name B-fromloc.city_name
 to O O
 salt B-toloc.city_name B-toloc.city_name
 lake I-toloc.city_name I-toloc.city_name
-city I-toloc.city_name I-toloc.city_name
+city I-toloc.city_name O
 with O O
 aircraft O O
 type O O
@@ -8973,7 +8973,7 @@ on O O
 continental B-airline_name B-airline_name
 that O O
 have O O
-meals B-meal B-meal
+meals B-meal O
 from O O
 chicago B-fromloc.city_name B-fromloc.city_name
 to O O
@@ -9038,7 +9038,7 @@ from O O
 indianapolis B-fromloc.city_name B-fromloc.city_name
 to O O
 orlando B-toloc.city_name B-toloc.city_name
-around B-depart_time.time_relative B-toloc.state_name
+around B-depart_time.time_relative O
 december B-depart_date.month_name B-depart_date.month_name
 twenty B-depart_date.day_number B-depart_date.day_number
 fifth I-depart_date.day_number I-depart_date.day_number
@@ -9102,7 +9102,7 @@ round B-round_trip B-round_trip
 trip I-round_trip I-round_trip
 fare O O
 from O O
-or O B-or
+or O O
 indianapolis B-fromloc.city_name B-fromloc.city_name
 to O O
 orlando B-toloc.city_name B-toloc.city_name
@@ -9509,7 +9509,7 @@ does O O
 northwest B-airline_name B-airline_name
 have O O
 leaving O O
-dulles B-fromloc.airport_name B-meal_description
+dulles B-fromloc.airport_name O
 EOS O O
 
 BOS O O
@@ -9606,7 +9606,7 @@ BOS O O
 what O O
 is O O
 a O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -9616,14 +9616,14 @@ of O O
 plane O O
 is O O
 a O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
 what O O
 is O O
 a O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -9633,7 +9633,7 @@ the O O
 airports O O
 serviced O O
 by O O
-tower B-airline_name B-airline_name
+tower B-airline_name O
 air I-airline_name I-airline_name
 EOS O O
 
@@ -9647,7 +9647,7 @@ and O O
 coach B-class_type B-class_type
 flights O O
 between O O
-jfk B-fromloc.airport_code B-fromloc.airport_name
+jfk B-fromloc.airport_code B-fromloc.airport_code
 and O O
 orlando B-toloc.city_name B-toloc.city_name
 EOS O O
@@ -9663,7 +9663,7 @@ coach B-class_type B-class_type
 flights O O
 from O O
 <UNK> B-fromloc.airport_name B-fromloc.airport_name
-airport I-fromloc.airport_name O
+airport I-fromloc.airport_name I-fromloc.airport_name
 to O O
 miami B-toloc.city_name B-toloc.city_name
 EOS O O
@@ -9678,14 +9678,14 @@ and O O
 coach B-class_type B-class_type
 flights O O
 from O O
-jfk B-fromloc.airport_code B-fromloc.airport_name
+jfk B-fromloc.airport_code B-fromloc.airport_code
 to O O
 miami B-toloc.city_name B-toloc.city_name
 EOS O O
 
 BOS O O
 are O O
-meals B-meal B-meal
+meals B-meal O
 <UNK> O O
 served O O
 on O O
@@ -9708,7 +9708,7 @@ delta B-airline_name B-airline_name
 airlines I-airline_name I-airline_name
 flights O O
 from O O
-jfk B-fromloc.airport_code B-flight_number
+jfk B-fromloc.airport_code B-fromloc.airport_code
 to O O
 miami B-toloc.city_name B-toloc.city_name
 EOS O O
@@ -9800,7 +9800,7 @@ the O O
 lowest B-cost_relative B-cost_relative
 fare O O
 from O O
-bwi B-fromloc.airport_code B-fromloc.airport_name
+bwi B-fromloc.airport_code B-fromloc.airport_code
 to O O
 salt B-toloc.city_name B-toloc.city_name
 lake I-toloc.city_name I-toloc.city_name
@@ -9845,7 +9845,7 @@ what O O
 is O O
 the O O
 earliest B-flight_mod B-flight_mod
-arriving I-flight_mod O
+arriving I-flight_mod B-depart_time.period_of_day
 flight O O
 between O O
 boston B-fromloc.city_name B-fromloc.city_name
@@ -9859,7 +9859,7 @@ what O O
 's O O
 the O O
 earliest B-flight_mod B-flight_mod
-arriving I-flight_mod O
+arriving I-flight_mod B-depart_time.period_of_day
 flight O O
 between O O
 boston B-fromloc.city_name B-fromloc.city_name
@@ -9950,7 +9950,7 @@ capacity O O
 on O O
 the O O
 aircraft O O
-DIGITDIGITDIGIT B-aircraft_code B-aircraft_code
+DIGITDIGITDIGIT B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -9973,7 +9973,7 @@ capacity O O
 of O O
 the O O
 aircraft O O
-72s B-aircraft_code O
+72s B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -9985,7 +9985,7 @@ capacity O O
 of O O
 the O O
 aircraft O O
-m80 B-aircraft_code O
+m80 B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -9999,7 +9999,7 @@ the O O
 type O O
 of O O
 aircraft O O
-m80 B-aircraft_code O
+m80 B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -10061,7 +10061,7 @@ the O O
 capacity O O
 of O O
 the O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -10078,7 +10078,7 @@ capacity O O
 on O O
 the O O
 aircraft O O
-<UNK> B-aircraft_code O
+<UNK> B-aircraft_code B-flight_number
 EOS O O
 
 BOS O O
@@ -10098,7 +10098,7 @@ many O O
 people O O
 will O O
 a O O
-DIGITDIGITDIGIT B-aircraft_code B-aircraft_code
+DIGITDIGITDIGIT B-aircraft_code O
 <UNK> O O
 EOS O O
 
@@ -10144,7 +10144,7 @@ from O O
 DIGIT B-arrive_time.start_time B-arrive_time.start_time
 to O O
 DIGIT B-arrive_time.end_time B-arrive_time.end_time
-pm I-arrive_time.end_time O
+pm I-arrive_time.end_time I-arrive_time.time
 EOS O O
 
 BOS O O
@@ -10160,7 +10160,7 @@ in O O
 denver B-toloc.city_name B-toloc.city_name
 between O O
 DIGIT B-arrive_time.start_time B-arrive_time.start_time
-pm I-arrive_time.start_time B-arrive_time.start_time
+pm I-arrive_time.start_time I-arrive_time.start_time
 and O O
 DIGIT B-arrive_time.end_time B-arrive_time.end_time
 pm I-arrive_time.end_time I-arrive_time.end_time
@@ -10182,7 +10182,7 @@ tell O O
 me O O
 about O O
 the O O
-m80 B-aircraft_code B-toloc.city_name
+m80 B-aircraft_code B-aircraft_code
 aircraft O O
 EOS O O
 
@@ -10191,7 +10191,7 @@ tell O O
 me O O
 about O O
 the O O
-m80 B-aircraft_code B-toloc.city_name
+m80 B-aircraft_code B-aircraft_code
 aircraft O O
 EOS O O
 
@@ -10205,7 +10205,7 @@ of O O
 aircraft O O
 <UNK> O O
 an O O
-m80 B-aircraft_code B-transport_type
+m80 B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -10239,7 +10239,7 @@ capacity O O
 on O O
 the O O
 aircraft O O
-m80 B-aircraft_code O
+m80 B-aircraft_code B-aircraft_code
 EOS O O
 
 BOS O O
@@ -10247,7 +10247,7 @@ list O O
 all O O
 flights O O
 arriving O O
-or O B-or
+or O O
 leaving O O
 denver B-city_name B-fromloc.city_name
 between O O
@@ -10334,7 +10334,7 @@ if O O
 i O O
 arrive O O
 at O O
-DIGITDIGITDIGIT O O
+DIGITDIGITDIGIT O B-arrive_time.time
 in O O
 the O O
 morning B-period_of_day B-arrive_time.period_of_day
@@ -10374,7 +10374,7 @@ la B-airport_name B-fromloc.airport_name
 guardia I-airport_name I-fromloc.airport_name
 airport I-airport_name I-fromloc.airport_name
 into O O
-new B-city_name B-toloc.city_name
+new B-city_name B-fromloc.city_name
 york I-city_name I-fromloc.city_name
 city I-city_name I-fromloc.city_name
 EOS O O
@@ -10385,11 +10385,11 @@ there O O
 ground O O
 transportation O O
 from O O
-<UNK> B-airport_code O
+<UNK> B-airport_code B-fromloc.airport_name
 into O O
-new B-city_name B-city_name
-york I-city_name I-city_name
-city I-city_name I-city_name
+new B-city_name B-fromloc.city_name
+york I-city_name I-fromloc.city_name
+city I-city_name I-fromloc.city_name
 EOS O O
 
 BOS O O
@@ -10399,11 +10399,11 @@ the O O
 ground O O
 transportation O O
 from O O
-<UNK> B-airport_code O
+<UNK> B-airport_code B-fromloc.airport_name
 into O O
-new B-city_name B-city_name
-york I-city_name I-city_name
-city I-city_name I-city_name
+new B-city_name B-fromloc.city_name
+york I-city_name I-fromloc.city_name
+city I-city_name I-fromloc.city_name
 EOS O O
 
 BOS O O
@@ -10412,11 +10412,11 @@ list O O
 ground O O
 transportation O O
 from O O
-ewr B-airport_code O
+ewr B-airport_code B-fromloc.state_code
 into O O
-new B-city_name B-city_name
-york I-city_name I-city_name
-city I-city_name I-city_name
+new B-city_name B-fromloc.city_name
+york I-city_name I-fromloc.city_name
+city I-city_name I-fromloc.city_name
 EOS O O
 
 BOS O O
@@ -10493,7 +10493,7 @@ alaska B-airline_name B-airline_name
 airlines I-airline_name I-airline_name
 have O O
 to O O
-burbank B-toloc.city_name B-toloc.city_name
+burbank B-toloc.city_name O
 EOS O O
 
 BOS O O
@@ -10766,9 +10766,9 @@ next B-depart_date.date_relative B-depart_date.date_relative
 wednesday B-depart_date.day_name B-depart_date.day_name
 and O O
 returning O O
-the B-return_date.date_relative O
-following I-return_date.date_relative O
-day I-return_date.date_relative O
+the B-return_date.date_relative B-return_date.date_relative
+following I-return_date.date_relative I-return_date.date_relative
+day I-return_date.date_relative I-return_date.date_relative
 EOS O O
 
 BOS O O
@@ -10828,9 +10828,9 @@ is O O
 there O O
 at O O
 the O O
-las B-airport_name B-city_name
-vegas I-airport_name I-city_name
-airport I-airport_name I-fromloc.airport_name
+las B-airport_name B-fromloc.airport_name
+vegas I-airport_name I-fromloc.airport_name
+airport I-airport_name I-airport_name
 EOS O O
 
 BOS O O
@@ -10840,8 +10840,8 @@ taxi B-transport_type B-transport_type
 service I-transport_type O
 at O O
 the O O
-ontario B-airport_name B-airport_name
-airport I-airport_name I-airport_name
+ontario B-airport_name B-fromloc.airport_name
+airport I-airport_name I-fromloc.airport_name
 EOS O O
 
 BOS O O
@@ -10887,13 +10887,13 @@ are O O
 the O O
 flights O O
 on O O
-<UNK> B-depart_date.day_name O
+<UNK> B-depart_date.day_name B-airline_name
 that O O
 travel O O
 from O O
 charlotte B-fromloc.city_name B-fromloc.city_name
 north B-fromloc.state_name B-fromloc.state_name
-carolina I-fromloc.state_name B-stoploc.city_name
+carolina I-fromloc.state_name I-fromloc.state_name
 to O O
 phoenix B-toloc.city_name B-toloc.city_name
 arizona B-toloc.state_name B-toloc.state_name
@@ -10943,7 +10943,7 @@ louis I-fromloc.city_name I-fromloc.city_name
 to O O
 charlotte B-toloc.city_name B-toloc.city_name
 north B-toloc.state_name B-toloc.state_name
-carolina I-toloc.state_name B-round_trip
+carolina I-toloc.state_name I-toloc.state_name
 leaving O O
 on O O
 friday B-depart_date.day_name B-depart_date.day_name
@@ -11016,7 +11016,7 @@ how O O
 about O O
 a O O
 flight O O
-leaving O O
+leaving O B-depart_date.date_relative
 tuesday B-depart_date.day_name B-depart_date.day_name
 night B-depart_time.period_of_day B-depart_time.period_of_day
 from O O
@@ -11036,7 +11036,7 @@ salt B-fromloc.city_name B-fromloc.city_name
 lake I-fromloc.city_name I-fromloc.city_name
 to O O
 newark B-toloc.airport_name B-toloc.airport_name
-airport I-toloc.airport_name O
+airport I-toloc.airport_name I-fromloc.airport_name
 that O O
 arrives O O
 on O O
@@ -11056,7 +11056,7 @@ from O O
 cincinnati B-fromloc.city_name B-fromloc.city_name
 to O O
 newark B-toloc.airport_name B-toloc.airport_name
-airport I-toloc.airport_name O
+airport I-toloc.airport_name I-toloc.airport_name
 that O O
 arrives O O
 on O O
@@ -11322,10 +11322,10 @@ city I-fromloc.city_name I-fromloc.city_name
 to O O
 new B-toloc.city_name B-toloc.city_name
 york I-toloc.city_name I-toloc.city_name
-city I-toloc.city_name O
+city I-toloc.city_name I-toloc.city_name
 next B-depart_date.date_relative B-depart_date.date_relative
 saturday B-depart_date.day_name B-depart_date.day_name
-before B-arrive_time.time_relative O
+before B-arrive_time.time_relative B-depart_time.time_relative
 arriving O O
 before B-arrive_time.time_relative B-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
@@ -11573,7 +11573,7 @@ the O O
 price O O
 of O O
 DIGITDIGITDIGIT B-fare_amount B-fare_amount
-dollars I-fare_amount O
+dollars I-fare_amount I-fare_amount
 for O O
 june B-depart_date.month_name B-depart_date.month_name
 tenth B-depart_date.day_number B-depart_date.day_number
@@ -11613,7 +11613,7 @@ on O O
 may B-depart_date.month_name B-depart_date.month_name
 seventeenth B-depart_date.day_number B-depart_date.day_number
 one B-round_trip B-round_trip
-way I-round_trip I-round_trip
+way I-round_trip O
 with O O
 dinner B-meal_description B-meal_description
 EOS O O
@@ -11672,15 +11672,15 @@ EOS O O
 BOS O O
 is O O
 there O O
-one O B-round_trip
-airline O I-round_trip
+one O O
+airline O O
 that O O
 flies O O
 from O O
 burbank B-fromloc.city_name B-fromloc.city_name
 to O O
 milwaukee B-toloc.city_name B-toloc.city_name
-milwaukee B-fromloc.city_name B-fromloc.city_name
+milwaukee B-fromloc.city_name B-toloc.city_name
 to O O
 st. B-toloc.city_name B-toloc.city_name
 louis I-toloc.city_name I-toloc.city_name
@@ -11746,7 +11746,7 @@ all O O
 the O O
 airports O O
 near O O
-westchester B-city_name B-city_name
+westchester B-city_name B-fromloc.city_name
 county I-city_name I-city_name
 EOS O O
 
@@ -11780,10 +11780,10 @@ the O O
 airports O O
 in O O
 the O O
-new B-city_name B-city_name
-york I-city_name I-city_name
+new B-city_name O
+york I-city_name I-fromloc.city_name
 city I-city_name I-city_name
-area O I-city_name
+area O O
 EOS O O
 
 BOS O O
@@ -11799,13 +11799,13 @@ any O O
 airport O O
 in O O
 the O O
-new B-toloc.city_name B-city_name
+new B-toloc.city_name B-fromloc.city_name
 york I-toloc.city_name I-fromloc.city_name
 city I-toloc.city_name I-fromloc.city_name
 area O O
 that O O
 arrive O O
-next B-arrive_date.date_relative B-depart_date.date_relative
+next B-arrive_date.date_relative B-arrive_date.date_relative
 saturday B-arrive_date.day_name B-arrive_date.day_name
 before B-arrive_time.time_relative B-arrive_time.time_relative
 DIGIT B-arrive_time.time B-arrive_time.time
@@ -11824,10 +11824,10 @@ any O O
 airport O O
 in O O
 the O O
-new B-toloc.city_name B-city_name
+new B-toloc.city_name B-fromloc.city_name
 york I-toloc.city_name I-fromloc.city_name
 city I-toloc.city_name I-fromloc.city_name
-area O B-toloc.state_name
+area O O
 EOS O O
 
 BOS O O

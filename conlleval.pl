@@ -2,7 +2,7 @@
 # conlleval: evaluate result of processing CoNLL-2000 shared task
 # usage:     conlleval [-l] [-r] [-d delimiterTag] [-o oTag] < file
 #            README: http://cnts.uia.ac.be/conll2000/chunking/output.html
-# options:   l: generate LaTeX output for tables like in
+# options:   l: generate LaTeX output_embed for tables like in
 #               http://cnts.uia.ac.be/conll2003/ner/example.tex
 #            r: accept raw result tags (without B- and I- prefix;
 #                                       assumes one word per chunk)
@@ -39,7 +39,7 @@ my $guessedType;          # type of current guessed chunk tag
 my $i;                    # miscellaneous counter
 my $inCorrect = $false;   # currently processed chunk is correct until now
 my $lastCorrect = "O";    # previous chunk tag in corpus
-my $latex = 0;            # generate LaTeX formatted output
+my $latex = 0;            # generate LaTeX formatted output_embed
 my $lastCorrectType = ""; # type of previously identified chunk tag
 my $lastGuessed = "O";    # previously identified chunk tag
 my $lastGuessedType = ""; # type of previous chunk tag in corpus
