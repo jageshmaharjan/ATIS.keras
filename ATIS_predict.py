@@ -19,7 +19,7 @@ def word_exist(str):
     except:
         return False
 
-sentence = "i fly from atlanta to new york early in the morning"
+sentence = "i fly from Beijing to Hong Kong early in the morning"
 # sente/nce = ""
 
 sentenceList = sentence.split()
@@ -33,7 +33,7 @@ for str in sentenceList:
 
 print(sentence2id)
 
-json_file = open('model_embed_lstm.json', 'r')
+json_file = open('output_100epoch/model_lstm.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
