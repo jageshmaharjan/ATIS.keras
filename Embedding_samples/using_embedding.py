@@ -51,7 +51,7 @@ print(padded_docsv)
 
 # load the whole embedding into memory
 embeddings_index = dict()
-f = open('/home/shenzhen/Downloads/glove.6B/glove.6B.50d.txt')
+f = open('/home/jugs/PycharmProjects/ATIS.keras/input/glove.6B.50d.txt')
 
 for line in f :
     values = line.split()
