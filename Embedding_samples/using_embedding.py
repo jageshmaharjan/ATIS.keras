@@ -28,6 +28,7 @@ labels_v = [1,0]
 # prepare tokenizer
 t = Tokenizer()
 t.fit_on_texts(docs)
+ddt = t
 vocab_size = len(t.word_index) + 1
 print(vocab_size)
 
@@ -42,7 +43,7 @@ print(encoded_docs)
 encoded_docsv = tv.texts_to_sequences(doc_v)
 print(encoded_docsv)
 
-# pad documents to a max length of 4 words
+# pad documents to a max length of 4 train_words
 max_length = 4
 padded_docs = pad_sequences(encoded_docs, maxlen=max_length, padding='post')
 padded_docsv = pad_sequences(encoded_docsv, maxlen=max_length, padding='post')
@@ -62,7 +63,7 @@ f.close()
 
 print('Loaded %s word vectors.' % len(embeddings_index))
 
-# create a weight matrix for words in training docs
+# create a weight matrix for train_words in training docs
 embedding_matrix = zeros((vocab_size, 50))
 for word, i in t.word_index.items():
     embedding_vector = embeddings_index.get(word)

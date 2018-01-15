@@ -29,7 +29,7 @@ w2idx, labels2idx = dicts['words2idx'], dicts['labels2idx']
 train_x, _, train_label = train_set
 val_x, _, val_label = valid_set
 
-# Create index to word/label dicts
+# Create index to word/train_label dicts
 idx2w  = {w2idx[k]:k for k in w2idx}
 idx2la = {labels2idx[k]:k for k in labels2idx}
 
@@ -45,17 +45,16 @@ n_vocab = len(idx2w)
 print("Example sentence : {}".format(words_train[1]))
 print("Encoded form: {}".format(train_x[1]))
 print()
-print("It's label : {}".format(labels_train[1]))
+print("It's train_label : {}".format(labels_train[1]))
 print("Encoded form: {}".format(train_label[1]))
 
 
-# create a weight matrix for words in training docs
+# create a weight matrix for train_words in training docs
 embedding_matrix = np.zeros((len(dicts['words2idx']), 50))
 for word, i in dicts['words2idx'].items():
     embedding_vector = embeddings_index.get(word)
     if embedding_vector is not None:
         embedding_matrix[i] = embedding_vector
-
 
 model = Sequential()
 e = Embedding(len(dicts['words2idx']), 50, weights=[embedding_matrix], trainable=False)

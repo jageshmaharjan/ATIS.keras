@@ -19,7 +19,7 @@ import progressbar
 train_set, valid_set, dicts = data.load.atisfull()
 w2idx, ne2idx, labels2idx = dicts['words2idx'], dicts['tables2idx'], dicts['labels2idx']
 
-# Create index to word/label dicts
+# Create index to word/train_label dicts
 idx2w  = {w2idx[k]:k for k in w2idx}
 idx2ne = {ne2idx[k]:k for k in ne2idx}
 idx2la = {labels2idx[k]:k for k in labels2idx}

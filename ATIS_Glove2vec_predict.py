@@ -27,7 +27,7 @@ sentence2id = []
 for str in sentenceList:
     if word_exist(str):
         sentence2id.append(words2ids[str])
-    else:   # tempo handeling of unseen words... lets use word embeeding
+    else:   # tempo handeling of unseen train_words... lets use word embeeding
         sentence2id.append(words2ids['<UNK>'])
         i = i+1;
 
